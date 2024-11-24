@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   version: "2.0",
   title: "echomimic2",
-  description: "",
+  description: "[NVIDIA ONLY] Make virtual avatars talk whatever you want with an image and an audio clip https://github.com/antgroup/echomimic_v2",
   icon: "icon.jpeg",
   menu: async (kernel, info) => {
     let installed = info.exists("app/env")
