@@ -32,10 +32,12 @@ module.exports = {
 //          "pip install torchao --index-url https://download.pytorch.org/whl/nightly/cu124",
           "pip install -r requirements.txt",
           "pip install --no-deps facenet_pytorch==2.6.0",
-          "pip install {{platform === 'darwin' ? 'eva-decord' : 'decord'}}"
+          "pip install {{platform === 'darwin' ? 'eva-decord' : 'decord'}}",
+          "pip install {{gpu === 'nvidia' ? 'onnxruntime-gpu' : (platform === 'darwin' ? 'onnxruntime-silicon' : 'onnxruntime')}}"
         ]
       }
     },
+
     {
       method: "shell.run",
       params: {
