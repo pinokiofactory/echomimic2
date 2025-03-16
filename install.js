@@ -29,20 +29,27 @@ module.exports = {
         path: "app",                // Edit this to customize the path to start the shell from
         message: [
           "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 xformers==0.0.28.post3 --index-url https://download.pytorch.org/whl/cu124",
-          "uv pip install torchao --index-url https://download.pytorch.org/whl/nightly/cu124",
-          "pip install -r requirements.txt",
+          "uv pip install -r requirements.txt",
           "uv pip install --no-deps facenet_pytorch==2.6.0",
         ]
       }
     },
     {
+      when: "{{platform === 'win32'}}",
       method: "shell.run",
       params: {
-        path: "app",                // Edit this to customize the path to start the shell from
-        venv: "env",
-        message: [
-          "uv pip install huggingface_hub[cli]==0.25.0",
-        ]
+        venv: "env",                // Edit this to customize the venv folder path
+        path: "app",
+        message: "uv pip install torchao"
+      }
+    },
+    {
+      when: "{{platform === 'linux'}}",
+      method: "shell.run",
+      params: {
+        venv: "env",                // Edit this to customize the venv folder path
+        path: "app",
+        message: "uv pip install torchao --index-url https://download.pytorch.org/whl/nightly/cu124"
       }
     },
     {
@@ -53,17 +60,40 @@ module.exports = {
       }
     },
     {
-      method: "shell.run",
+      method: "hf.download",
       params: {
-        path: "app",                // Edit this to customize the path to start the shell from
-        venv: "env",
-        message: [
-          "huggingface-cli download BadToBest/EchoMimicV2 --local-dir pretrained_weights",
-          "huggingface-cli download stabilityai/sd-vae-ft-mse --local-dir pretrained_weights/sd-vae-ft-mse",
-          "huggingface-cli download lambdalabs/sd-image-variations-diffusers --local-dir pretrained_weights/sd-image-variations-diffusers",
-          "huggingface-cli download cocktailpeanut/audio_processor --local-dir pretrained_weights/audio_processor"
-        ]
+        path: "app",
+        "_": [ "BadToBest/EchoMimicV2" ],
+        "exclude": "*.md",
+        "local-dir": "pretrained_weights"
       }
     },
+    {
+      method: "hf.download",
+      params: {
+        path: "app",
+        "_": [ "stabilityai/sd-vae-ft-mse" ],
+        "exclude": "*.md",
+        "local-dir": "pretrained_weights/sd-vae-ft-mse"
+      }
+    },
+    {
+      method: "hf.download",
+      params: {
+        path: "app",
+        "_": [ "lambdalabs/sd-image-variations-diffusers" ],
+        "exclude": "*.md",
+        "local-dir": "pretrained_weights/sd-image-variations-diffusers"
+      }
+    },
+    {
+      method: "hf.download",
+      params: {
+        path: "app",
+        "_": [ "cocktailpeanut/audio_processor" ],
+        "exclude": "*.md",
+        "local-dir": "pretrained_weights/audio_processor"
+      }
+    }
   ]
 }
