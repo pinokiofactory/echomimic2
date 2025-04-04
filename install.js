@@ -31,6 +31,7 @@ module.exports = {
           "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 xformers==0.0.28.post3 --index-url https://download.pytorch.org/whl/cu124",
           "uv pip install -r requirements.txt",
           "uv pip install --no-deps facenet_pytorch==2.6.0",
+          "uv pip install pydantic==2.10.6"
         ]
       }
     },
@@ -40,7 +41,10 @@ module.exports = {
       params: {
         venv: "env",                // Edit this to customize the venv folder path
         path: "app",
-        message: "uv pip install torchao"
+        message: [
+          "uv pip install torchao",
+          "uv pip install triton-windows"
+        ]
       }
     },
     {
