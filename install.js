@@ -56,13 +56,13 @@ module.exports = {
         message: "uv pip install torchao --index-url https://download.pytorch.org/whl/nightly/cu124"
       }
     },
-    {
-      when: "{{platform !== 'linux'}}",
-      method: "fs.link",
-      params: {
-        venv: "app/env"
-      }
-    },
+//    {
+//      when: "{{platform !== 'linux'}}",
+//      method: "fs.link",
+//      params: {
+//        venv: "app/env"
+//      }
+//    },
     {
       method: "hf.download",
       params: {
