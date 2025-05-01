@@ -42,7 +42,7 @@ module.exports = {
         path: "app",
         message: [
           "uv pip install torchao",
-          "uv pip install triton-windows"
+          "uv pip install triton-windows==3.2.0.post18"
         ]
       }
     },
