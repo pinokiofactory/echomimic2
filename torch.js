@@ -2,13 +2,15 @@ module.exports = {
   run: [
     // nvidia 50 series
     {
-      "when": "{{gpu === 'nvidia' && kernel.gpu_model && / 50.+/.test(kernel.gpu_model) }}",
+      "when": "{{platform === 'win32' && gpu === 'nvidia' && kernel.gpu_model && / 50.+/.test(kernel.gpu_model) }}",
       "method": "shell.run",
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128"
+          "uv pip install torch torchvision torchaudio {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128",
+          "uv pip install -U --pre triton-windows",
+          "uv pip install torchao"
         ]
       },
       "next": null
@@ -20,7 +22,11 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124"
+        "message": [
+          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124",,
+          "uv pip install triton-windows==3.2.0.post18",
+          "uv pip install torchao"
+        ]
       }
     },
     // windows amd
@@ -30,7 +36,10 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch-directml torchaudio torchvision numpy==1.26.4"
+        "message": [
+          "uv pip install torch-directml torchaudio torchvision numpy==1.26.4",
+          "uv pip install torchao"
+        ]
       }
     },
     // windows cpu
@@ -40,7 +49,10 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1"
+        "message": [
+          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1",
+          "uv pip install torchao"
+        ]
       }
     },
     // mac
@@ -50,8 +62,25 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1"
+        "message": [
+          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1",
+          "uv pip install torchao"
+        ]
       }
+    },
+    // nvidia 50 series linux
+    {
+      "when": "{{platform === 'linux' && gpu === 'nvidia' && kernel.gpu_model && / 50.+/.test(kernel.gpu_model) }}",
+      "method": "shell.run",
+      "params": {
+        "venv": "{{args && args.venv ? args.venv : null}}",
+        "path": "{{args && args.path ? args.path : '.'}}",
+        "message": [
+          "uv pip install torch torchvision torchaudio {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128",
+          "uv pip install triton"
+        ]
+      },
+      "next": null
     },
     // linux nvidia
     {
@@ -60,7 +89,11 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124"
+        "message": [
+          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124",
+          "uv pip install triton",
+          "uv pip install torchao --index-url https://download.pytorch.org/whl/cu124"
+        ]
       }
     },
     // linux rocm (amd)
