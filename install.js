@@ -35,34 +35,6 @@ module.exports = {
       }
     },
     {
-      when: "{{platform === 'win32'}}",
-      method: "shell.run",
-      params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        path: "app",
-        message: [
-          "uv pip install torchao",
-          "uv pip install triton-windows==3.2.0.post18"
-        ]
-      }
-    },
-    {
-      when: "{{platform === 'linux'}}",
-      method: "shell.run",
-      params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        path: "app",
-        message: "uv pip install torchao --index-url https://download.pytorch.org/whl/nightly/cu124"
-      }
-    },
-//    {
-//      when: "{{platform !== 'linux'}}",
-//      method: "fs.link",
-//      params: {
-//        venv: "app/env"
-//      }
-//    },
-    {
       method: "hf.download",
       params: {
         path: "app",
