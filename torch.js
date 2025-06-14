@@ -23,7 +23,7 @@ module.exports = {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124",,
+          "uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124",,
           "uv pip install triton-windows==3.2.0.post18",
           "uv pip install torchao"
         ]
@@ -50,7 +50,7 @@ module.exports = {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1",
+          "uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0",
           "uv pip install torchao"
         ]
       }
@@ -63,7 +63,7 @@ module.exports = {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1",
+          "uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0",
           "uv pip install torchao"
         ]
       }
@@ -90,7 +90,7 @@ module.exports = {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124",
+          "uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu124",
           "uv pip install triton",
           "uv pip install torchao --index-url https://download.pytorch.org/whl/cu124"
         ]
@@ -103,7 +103,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/rocm6.2"
+        "message": "uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/rocm6.2.4"
       }
     },
     // linux cpu
@@ -113,7 +113,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cpu"
+        "message": "uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu"
       }
     }
   ]
