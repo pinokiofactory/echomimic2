@@ -28,7 +28,7 @@ module.exports = {
         message: [
           "uv pip install -r requirements.txt",
           "uv pip install --no-deps facenet_pytorch==2.6.0",
-          "uv pip install pydantic==2.10.6"
+          "uv pip install pydantic==2.10.6 hf-xet"
         ]
       }
     },
