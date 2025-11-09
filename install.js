@@ -33,28 +33,28 @@ module.exports = {
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app",
         message: "hf download BadToBest/EchoMimicV2 --exclude '*.md' --local-dir pretrained_weights"
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app",
         message: "hf download stabilityai/sd-vae-ft-mse --exclude '*.md' --local-dir pretrained_weights/sd-vae-ft-mse"
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app",
         message: "hf download lambdalabs/sd-image-variations-diffusers --exclude '*.md' --local-dir pretrained_weights/sd-image-variations-diffusers"
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app",
         message: "hf download cocktailpeanut/audio_processor --exclude '*.md' --local-dir pretrained_weights/audio_processor"
