@@ -26,7 +26,8 @@ module.exports = {
       params: {
         venv: "env",
         path: "app",
-        message: ["uv pip install wheel",
+        message: [
+          "uv pip install wheel",
           "uv pip install git+https://github.com/openai/CLIP.git@d50d76daa670286dd6cacf3bcd80b5e4823fc8e1 --no-build-isolation",
           "uv pip install -r ../requirements.txt",
           "uv pip install --no-deps facenet_pytorch==2.6.0",
